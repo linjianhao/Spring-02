@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengze.spring.mapper.MenuDoMapper" >
+  <resultMap id="BaseResultMap" type="com.fengze.spring.model.MenuDo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+    <result column="type_p_id" property="typePId" jdbcType="INTEGER" />
+    <result column="menu_uri" property="menuUri" jdbcType="VARCHAR" />
+    <result column="menu_style" property="menuStyle" jdbcType="VARCHAR" />
+    <result column="is_menu" property="isMenu" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

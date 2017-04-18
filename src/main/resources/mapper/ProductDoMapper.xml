@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengze.spring.mapper.ProductDoMapper" >
+  <resultMap id="BaseResultMap" type="com.fengze.spring.model.ProductDo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="pro_id" property="proId" jdbcType="BIGINT" />
+    <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+    <result column="pro_real_price" property="proRealPrice" jdbcType="DOUBLE" />
+    <result column="pro_now_price" property="proNowPrice" jdbcType="DOUBLE" />
+    <result column="is_stock" property="isStock" jdbcType="VARCHAR" />
+    <result column="pro_desc" property="proDesc" jdbcType="VARCHAR" />
+    <result column="pro_size" property="proSize" jdbcType="VARCHAR" />
+    <result column="pro_color" property="proColor" jdbcType="VARCHAR" />
+    <result column="pro_score" property="proScore" jdbcType="DOUBLE" />
+    <result column="pro_type_id" property="proTypeId" jdbcType="VARCHAR" />
+    <result column="pro_pic_id" property="proPicId" jdbcType="INTEGER" />
+    <result column="pro_pic_uri" property="proPicUri" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

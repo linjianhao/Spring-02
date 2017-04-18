@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--将properties文件导进配置文件中-->
+    <properties resource="generatorConfig.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!--生成文件的编码格式-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--mapper.plugin就是generatorConfig.properties中配置的值；这里就是来指明插件的main方法是谁
+        运行这个main方法可以执行通用mapper生成相应的文件-->
+        <plugin type="${mapper.plugin}">
+            <property name="mappers" value="${mapper.Mapper}"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+
+        <!--${basedir}/src/main/java  com.fengze.spring.model  -->
+        <!--设置生成的实体类java文件在${targetJavaProject}路径下的，${targetModelPackage}的包-->
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+        <!--生成的Mapper映射文件路径-->
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+        <!--生成mapper接口  type写死为：XMLMAPPER-->
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER"/>
+
+
+        <!--下面是映射表名和对象名-->
+        <!--<table tableName="%">-->
+        <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="TB_USER" domainObjectName="UserDo">
+            <generatedKey column="USER_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PROD_TYPE" domainObjectName="MenuDo">
+            <generatedKey column="TYPE_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PRODUCT" domainObjectName="ProductDo">
+            <generatedKey column="PRO_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PROD_DETAIL" domainObjectName="ProDetDo">
+            <generatedKey column="DET_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PROD_PIC" domainObjectName="ProPicDo">
+            <generatedKey column="PIC_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PROD_CAR" domainObjectName="ProCarDo">
+            <generatedKey column="CAR_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_PROD_COMMENT" domainObjectName="ProComDo">
+            <generatedKey column="COM_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_ORDER" domainObjectName="OrderDo">
+            <generatedKey column="ORDER_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="TB_ORDER_DETAIL" domainObjectName="OrderDetDo">
+            <generatedKey column="DETAIL_ID" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

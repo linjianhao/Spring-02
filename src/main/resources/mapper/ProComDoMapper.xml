@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengze.spring.mapper.ProComDoMapper" >
+  <resultMap id="BaseResultMap" type="com.fengze.spring.model.ProComDo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="com_id" property="comId" jdbcType="INTEGER" />
+    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="com_title" property="comTitle" jdbcType="VARCHAR" />
+    <result column="com_desc" property="comDesc" jdbcType="VARCHAR" />
+    <result column="pro_score" property="proScore" jdbcType="DOUBLE" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>
