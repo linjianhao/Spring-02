@@ -74,6 +74,12 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${springframework-version}</version>
         </dependency>
+        <!--用于事务的启用-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
         <!--Spring和mybatis整合包-->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -126,6 +132,11 @@
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.0.0</version>
         </dependency>
     </dependencies>
     <build>

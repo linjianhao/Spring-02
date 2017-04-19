@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop/spring-aop.xsd" default-lazy-init="true">
     <!--扫描包-->
     <context:component-scan base-package="com.fengze.spring"/>
 <!--加载C3P0数据库连接池文件jdbc.properties-->
@@ -23,7 +23,6 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>-->
-
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${c3p0.driverClass}"></property>
         <property name="jdbcUrl" value="${c3p0.url}"></property>
@@ -38,25 +37,43 @@
         <property name="acquireRetryAttempts" value="60"></property>
         <property name="breakAfterAcquireFailure" value="false"></property>
     </bean>
-    <!--依赖于pom.xml文件中的mybatis—spring整合包-->
+    <!--依赖于pom.xml文件中的mybatis—spring整合包(sqlSessionFactory托管给Spring管理，Spring
+    会自动提交的)如果启用事务的话，就不会自动提交了-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.fengze.spring.domain"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            param1=value1
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 <!--通用mapper的配置-->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫包com.fengze.spring.mappe是mapper接口，是运行时才扫的-->
         <property name="basePackage" value="com.fengze.spring.mapper" />
+        <!--标记接口；上面的mapper接口继承下面的全限定名下的Mapper，都可以扫描到，使用通用Mapper里
+        面封装的单标查询的方法-->
         <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/>
     </bean>
 
-    <!--事务配置
+    <!--事务配置开始（在BaseSpringTest.java文件中使用Transactional）-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
+    <!--dataSource里有链接；事务是通过链接生成的(因为BaseSpringTest开启事务是使用注解的方式，就要使用这个配置)-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--事务配置结束-->
 
-    <aop:aspectj-autoproxy/>
--->
+    <!--切面事务-->
+    <!--<aop:aspectj-autoproxy/>-->
+
+
 </beans>
