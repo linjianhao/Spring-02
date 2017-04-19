@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Administrator on 2017/4/18.
  */
-/*加载测试类*/
+/*加载测试类（JUnit4以后得版本支持注解的方式）*/
 @RunWith(SpringJUnit4ClassRunner.class)
 /*加载Spring容器，初始化上下文对象*/
 @ContextConfiguration(locations={"classpath*:applicationContext.xml"})
@@ -20,4 +20,5 @@ import org.springframework.transaction.annotation.Transactional;
 //@Transactional(propagation= Propagation.NOT_SUPPORTED)
 @Transactional
 public class BaseSpringTest {
+
 }

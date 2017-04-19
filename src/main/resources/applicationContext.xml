@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd" default-lazy-init="true">
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--扫描包-->
     <context:component-scan base-package="com.fengze.spring"/>
 <!--加载C3P0数据库连接池文件jdbc.properties-->
